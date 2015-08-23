@@ -1,4 +1,4 @@
-package materialtest.vivz.slidenerd.activities;
+package materialtest.vivz.AreYouHealthy.activities;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -17,10 +17,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import materialtest.vivz.AreYouHealthy.activities.Intro;
 import materialtest.vivz.slidenerd.materialtest.R;
 
-public class ActivityA  extends ActionBarActivity implements View.OnClickListener{
+public class ActivityA extends ActionBarActivity implements View.OnClickListener{
     int requestCode,resultCode;
     Button start,exit,settings;
     @Override

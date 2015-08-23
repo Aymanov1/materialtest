@@ -1,26 +1,17 @@
 package materialtest.vivz.slidenerd.activities;
 
-import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.ActionBarActivity;
-import android.transition.Slide;
-import android.transition.Transition;
-import android.transition.TransitionInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 
-import materialtest.vivz.AreYouHealthy.activities.Intro;
 import materialtest.vivz.slidenerd.materialtest.R;
 
-public class ActivityA  extends ActionBarActivity implements View.OnClickListener{
+
+public class MainMenu extends ActionBarActivity implements View.OnClickListener{
     int requestCode,resultCode;
     Button start,exit,settings;
     @Override
@@ -48,9 +39,9 @@ public class ActivityA  extends ActionBarActivity implements View.OnClickListene
                 super.onDestroy();
             }
         } else if (i == R.id.settings) {
-            AlertDialog alert = new AlertDialog.Builder(ActivityA.this).create();
+            AlertDialog alert = new AlertDialog.Builder(MainMenu.this).create();
             alert.setTitle("About us");
-            alert.setMessage("Developers : AYMEN JALLABI ");
+            alert.setMessage("Developers : AYMEN JALLABI & EMNA KACHOUT   GI2 TRANSMEDIA FOR IA PROJECT");
             alert.setButton("OK", new DialogInterface.OnClickListener() {
 
                 public void onClick(DialogInterface dialog, int which) {
