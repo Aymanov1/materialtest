@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import materialtest.vivz.slidenerd.fragments.EnregistrementEtat;
 import materialtest.vivz.slidenerd.materialtest.R;
 
 

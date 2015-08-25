@@ -1,23 +1,13 @@
 package materialtest.vivz.slidenerd.activities;
 
-import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.ActionBarActivity;
-import android.transition.Slide;
-import android.transition.Transition;
-import android.transition.TransitionInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 
-import materialtest.vivz.AreYouHealthy.activities.Intro;
 import materialtest.vivz.slidenerd.materialtest.R;
 
 public class ActivityA  extends ActionBarActivity implements View.OnClickListener{

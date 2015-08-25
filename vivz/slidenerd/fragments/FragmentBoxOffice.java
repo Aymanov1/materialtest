@@ -1,19 +1,17 @@
 package materialtest.vivz.slidenerd.fragments;
 
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 
-import materialtest.vivz.slidenerd.activities.EnregistrementEtat;
 import materialtest.vivz.slidenerd.materialtest.R;
 
 /**
@@ -21,9 +19,10 @@ import materialtest.vivz.slidenerd.materialtest.R;
  * Use the {@link FragmentBoxOffice#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FragmentBoxOffice extends Fragment implements View.OnClickListener {
+public class FragmentBoxOffice extends Fragment  {
 
     ImageButton homme, femme, enfant, about;
+    FrameLayout lay1;
 
 
     // TODO: Rename and change types and number of parameters
@@ -35,26 +34,62 @@ public class FragmentBoxOffice extends Fragment implements View.OnClickListener 
         return fragment;
     }
 
-    public void onMoviesLoaded() {
 
-    }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
 
 
         FragmentActivity FragmentBoxOffice  = (FragmentActivity)    super.getActivity();
         // Replace LinearLayout by the type of the root element of the layout you're trying to load
-        LinearLayout llLayout    = (LinearLayout)    inflater.inflate(R.layout.activity_main3, container, false);
+
+
+        final FrameLayout llLayout    = (FrameLayout)    inflater.inflate(R.layout.activity_main3, container, false);
         homme = (ImageButton) llLayout.findViewById(R.id.homme);
+       lay1 = (FrameLayout) llLayout.findViewById(R.id.lay1);
+
         femme = (ImageButton) llLayout.findViewById(R.id.femme);
         enfant = (ImageButton) llLayout.findViewById(R.id.enfant);
-        about = (ImageButton) llLayout.findViewById(R.id.about);
-        about.setOnClickListener(this);
-        homme.setOnClickListener(this);
-        femme.setOnClickListener(this);
-        enfant.setOnClickListener(this);
+
+
+       // about.setOnClickListener(this);
+        homme.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = new EnregistrementEtat();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.lay1, fragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                fragmentTransaction.commit();
+            }
+        });
+        femme.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = new EnregistrementEtat();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.lay1, fragment);
+                fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
+        enfant.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = new EnregistrementEtat();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.lay1, fragment);
+                fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
         return llLayout;
 
 
@@ -62,45 +97,6 @@ public class FragmentBoxOffice extends Fragment implements View.OnClickListener 
 
 
 
-    @Override
-    public void onClick(View v){
-        Intent intent = new Intent(super.getActivity().getApplicationContext(), EnregistrementEtat.class);
-        int i = v.getId();
-        if (i == R.id.enfant) {
-            intent.putExtra("EnregistrementEtat", "bonjour aymoun");
-            startActivityForResult(intent,1);
-            // overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
 
-        } else if (i == R.id.femme) {
-            intent.putExtra("EnregistrementEtat", "bonjour aymoun");
-            startActivityForResult(intent,1);
-            // overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-
-        } else if (i == R.id.about) {
-            AlertDialog alert = new AlertDialog.Builder(super.getActivity().getApplicationContext()).create();
-            alert.setTitle("About us");
-            alert.setMessage("Developers : AYMEN JALLABI & Douraid TLILI  ");
-            alert.setButton("OK", new DialogInterface.OnClickListener() {
-
-                public void onClick(DialogInterface dialog, int which) {
-                    // Toast.makeText(super.getActivity().getIntent(), "Developed by AYMEN JALLABI & EMNA KACHOUT", Toast.LENGTH_SHORT).show();
-
-                }
-            });
-
-
-            //  alert.setCancelable(false);
-            alert.show();
-
-            // overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-//
-        } else if (i == R.id.homme) {
-            intent.putExtra("EnregistrementEtat", "bonjour aymoun");
-            startActivityForResult(intent,1);
-            //  overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-            //  Toast.makeText(Intro.this, "If you want to start, press Start", Toast.LENGTH_SHORT).show();
-
-
-        }
     }
-}
+

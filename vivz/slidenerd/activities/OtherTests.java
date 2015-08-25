@@ -13,8 +13,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import materialtest.vivz.slidenerd.materialtest.MyApplication;
 import materialtest.vivz.slidenerd.materialtest.R;
-
 
 public class OtherTests extends Activity implements View.OnClickListener {
 
@@ -30,12 +30,12 @@ public class OtherTests extends Activity implements View.OnClickListener {
     RadioGroup insomnia;
     RadioGroup tired,temperature;
     String txt;
-    GlobalVariables a;
+    MyApplication a;
     RadioButton radio_b,v1,v2,f1,f2,d1,d2,d3,di1,di2;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState); //To change body of generated methods, choose Tools | Templates.
         setContentView(R.layout.othertests);
-        a = ((GlobalVariables)getApplicationContext());
+        a = ((MyApplication)getApplicationContext());
         cdizzy = (ImageButton) findViewById(R.id.cdizzy);
         cvomit = (ImageButton) findViewById(R.id.cvomit);
         cdiah = (ImageButton) findViewById(R.id.cdiah);
@@ -138,26 +138,26 @@ public class OtherTests extends Activity implements View.OnClickListener {
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             boolean filled = true;
 
-try{
-            a.setVomit(conv(vomit));
-            a.setDiacons(conv2(dia));
-            a.setTemperature(conv(temperature));
-            a.setBack_ache(back_Aches.isChecked());
-            a.setChest_ache(chest_Aches.isChecked());
-            a.setHead_ache(head_Aches.isChecked());
-            a.setDizyyness(conv(dizziness));
-            a.setIsonomia(conv(insomnia));
-            a.setTired(conv(tired));}catch(Exception e){
-            Toast.makeText(getApplicationContext(), "Please fill the whole form", Toast.LENGTH_SHORT).show();
-            filled=false;}
+            try{
+                a.setVomit(conv(vomit));
+                a.setDiacons(conv2(dia));
+                a.setTemperature(conv(temperature));
+                a.setBack_ache(back_Aches.isChecked());
+                a.setChest_ache(chest_Aches.isChecked());
+                a.setHead_ache(head_Aches.isChecked());
+                a.setDizyyness(conv(dizziness));
+                a.setIsonomia(conv(insomnia));
+                a.setTired(conv(tired));}catch(Exception e){
+                Toast.makeText(getApplicationContext(), "Please fill the whole form", Toast.LENGTH_SHORT).show();
+                filled=false;}
             if (filled==true) {
-            startActivity(intent);
-            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-            finish();}
+                startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                finish();}
 
 
         } else if (i == R.id.annuler) {
-            Intent intent = new Intent(this, EnregistrementEtat.class);
+            Intent intent = new Intent(this, MainMenu.class);
             startActivity(intent);
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             finish();
@@ -189,21 +189,21 @@ try{
 
 
     }
-public int conv(RadioGroup i){
-    int abso;
-    int b=i.getCheckedRadioButtonId();
-    radio_b=(RadioButton)findViewById(b);
-    txt=radio_b.getText().toString();
-    if (txt.equals("YES")) abso=1; else abso=0;
-return abso;}
-  public int conv2(RadioGroup i){
+    public int conv(RadioGroup i){
+        int abso;
+        int b=i.getCheckedRadioButtonId();
+        radio_b=(RadioButton)findViewById(b);
+        txt=radio_b.getText().toString();
+        if (txt.equals("YES")) abso=1; else abso=0;
+        return abso;}
+    public int conv2(RadioGroup i){
         int abso;
         int b=i.getCheckedRadioButtonId();
         radio_b=(RadioButton)findViewById(b);
         txt=radio_b.getText().toString();
         if (txt.equals("Diarrhea")) abso=2;
-            else if (txt.equals("Constipation")) abso=1;
-            else   abso=0;
+        else if (txt.equals("Constipation")) abso=1;
+        else   abso=0;
         return abso;}
 
 

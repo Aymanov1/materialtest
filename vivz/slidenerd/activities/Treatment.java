@@ -6,19 +6,19 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import materialtest.vivz.slidenerd.materialtest.MyApplication;
 import materialtest.vivz.slidenerd.materialtest.R;
 
+public  class Treatment extends Activity {
 
-public class Treatment extends Activity {
 
-    GlobalVariables a;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState); //To change body of generated methods, choose Tools | Templates.
         setContentView(R.layout.treatment);
-        final GlobalVariables a = ((GlobalVariables) getApplicationContext());
+        final MyApplication a = ((MyApplication) getApplicationContext());
         TextView txt1 = (TextView) findViewById(R.id.txt1);
         ImageView im = (ImageView) findViewById(R.id.iv);
 
@@ -26,7 +26,7 @@ public class Treatment extends Activity {
         //cas mta3 flu 3indah s5ana >39
         //head ache + no9s noum + ta3ab + no9s nfas
         if (a.getIsonomia() == 1 && a.getTired() == 1 &&  a.getTemperature() == 1 &&
-                  a.getDiacons() == 0 && a.getDizyyness() == 0
+                a.getDiacons() == 0 && a.getDizyyness() == 0
                 && a.getCardiacPulse()>60 &&  a.getRespiration()>18
                 && a.getChest_ache()==false &&
                 a.getHead_ache()==true && a.getBack_ache()==false
@@ -42,9 +42,9 @@ public class Treatment extends Activity {
         //cas mta3 problem klawi 3indah
         //head -back ache + no9s noum (insomnia )+ ta3ab fatigue + no9s nfas + do5a dizzy
         else if (a.getIsonomia() == 1 && a.getTired() == 1
-                 && a.getTemperature()==0 &&
-                 a.getVomit() == 0 && a.getDiacons() == 0 && a.getDizyyness() == 1
-                  && a.getCardiacPulse()>65
+                && a.getTemperature()==0 &&
+                a.getVomit() == 0 && a.getDiacons() == 0 && a.getDizyyness() == 1
+                && a.getCardiacPulse()>65
                 && a.getChest_ache()==false &&
                 a.getHead_ache()==true && a.getBack_ache()==true  &&
                 (a.getRespiration()<20 && a.getRespiration()>12)
@@ -91,7 +91,7 @@ public class Treatment extends Activity {
                 a.getDizyyness() == 0 && a.getIsonomia() == 0 && a.getTired() == 0
                 && a.getChest_ache()==true &&
                 a.getHead_ache()==true && a.getBack_ache()==false && a.getTemperature()==0 &&
-                 (a.getRespiration()<20 && a.getRespiration()>12)
+                (a.getRespiration()<20 && a.getRespiration()>12)
                 && a.getCardiacPulse() <91)
         {
 
